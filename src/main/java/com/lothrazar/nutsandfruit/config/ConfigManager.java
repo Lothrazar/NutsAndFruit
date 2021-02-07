@@ -2,7 +2,7 @@ package com.lothrazar.nutsandfruit.config;
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
-import com.lothrazar.nutsandfruit.ExampleMod;
+import com.lothrazar.nutsandfruit.NutFruitsMod;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.fml.loading.FMLPaths;
@@ -17,7 +17,7 @@ public class ConfigManager {
   }
 
   private static void initConfig() {
-    BUILDER.comment("General settings").push(ExampleMod.MODID);
+    BUILDER.comment("General settings").push(NutFruitsMod.MODID);
     String category = "testing.";
     TESTING = BUILDER.comment("Testing mixin spam log if holding filled map").define(category + "serverTest", true);
     BUILDER.pop();
@@ -25,7 +25,7 @@ public class ConfigManager {
   }
 
   public static void setup() {
-    final CommentedFileConfig configData = CommentedFileConfig.builder(FMLPaths.CONFIGDIR.get().resolve(ExampleMod.MODID + ".toml"))
+    final CommentedFileConfig configData = CommentedFileConfig.builder(FMLPaths.CONFIGDIR.get().resolve(NutFruitsMod.MODID + ".toml"))
         .sync()
         .autosave()
         .writingMode(WritingMode.REPLACE)

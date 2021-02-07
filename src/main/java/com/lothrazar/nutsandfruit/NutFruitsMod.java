@@ -1,6 +1,5 @@
 package com.lothrazar.nutsandfruit;
 
-import com.lothrazar.nutsandfruit.config.ConfigClientManager;
 import com.lothrazar.nutsandfruit.config.ConfigManager;
 import com.lothrazar.nutsandfruit.event.ItemEvents;
 import net.minecraftforge.common.MinecraftForge;
@@ -11,15 +10,14 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(ExampleMod.MODID)
-public class ExampleMod {
+@Mod(NutFruitsMod.MODID)
+public class NutFruitsMod {
 
   public static final String MODID = "nutsandfruit";
   public static final Logger LOGGER = LogManager.getLogger();
 
-  public ExampleMod() {
+  public NutFruitsMod() {
     ConfigManager.setup();
-    ConfigClientManager.setup();
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
   }
