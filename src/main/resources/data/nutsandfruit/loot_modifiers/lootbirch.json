@@ -6,5 +6,6 @@
       "block":"minecraft:birch_leaves"
     }
   ],
+  "percent": 15,
   "replacement": "nutsandfruit:lingonberry"
 }

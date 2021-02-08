@@ -6,5 +6,6 @@
       "block":"minecraft:spruce_leaves"
     }
   ],
+  "percent": 10,
   "replacement": "nutsandfruit:sprucecone"
 }

@@ -42,6 +42,7 @@ public class ContentRegistry {
     r.register(new ItemNut(new Item.Properties().group(GRP).food(Foods.ENCHANTED_GOLDEN_APPLE)).setRegistryName("fruit_salad"));
     r.register(new ItemNut(new Item.Properties().group(GRP).food(Foods.SWEET_BERRIES)).setRegistryName("lime"));
     r.register(new ItemNut(new Item.Properties().group(GRP).food(Foods.SWEET_BERRIES)).setRegistryName("lingonberry"));
+    r.register(new ItemNut(new Item.Properties().group(GRP)).setRegistryName("lingonberry_twig"));
     r.register(new ItemNut(new Item.Properties().group(GRP).food(Foods.SWEET_BERRIES)).setRegistryName("pineapple"));
     r.register(new ItemNut(new Item.Properties().group(GRP)).setRegistryName("chestnut"));
     r.register(new ItemNut(new Item.Properties().group(GRP)).setRegistryName("sprucecone"));

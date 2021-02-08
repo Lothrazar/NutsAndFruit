@@ -6,5 +6,6 @@
       "block":"minecraft:dark_oak_leaves"
     }
   ],
+  "percent": 10,
   "replacement": "nutsandfruit:chestnut"
 }
