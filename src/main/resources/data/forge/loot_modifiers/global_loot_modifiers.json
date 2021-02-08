@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "entries": [
+    "nutsandfruit:lootacacia",
+    "nutsandfruit:lootjungle",
+    "nutsandfruit:lootspruce",
+    "nutsandfruit:lootdarkoak",
+    "nutsandfruit:lootbirch"
+  ]
+}

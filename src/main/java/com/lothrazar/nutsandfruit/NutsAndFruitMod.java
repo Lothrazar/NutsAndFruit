@@ -10,13 +10,13 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(NutFruitsMod.MODID)
-public class NutFruitsMod {
+@Mod(NutsAndFruitMod.MODID)
+public class NutsAndFruitMod {
 
   public static final String MODID = "nutsandfruit";
   public static final Logger LOGGER = LogManager.getLogger();
 
-  public NutFruitsMod() {
+  public NutsAndFruitMod() {
     ConfigManager.setup();
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
