@@ -39,6 +39,7 @@ public class ContentRegistry {
   @SubscribeEvent
   public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
     IForgeRegistry<Item> r = event.getRegistry();
+    r.register(new ItemNut(new Item.Properties().group(GRP).food(Foods.ENCHANTED_GOLDEN_APPLE)).setRegistryName("fruit_salad"));
     r.register(new ItemNut(new Item.Properties().group(GRP).food(Foods.SWEET_BERRIES)).setRegistryName("lime"));
     r.register(new ItemNut(new Item.Properties().group(GRP).food(Foods.SWEET_BERRIES)).setRegistryName("lingonberry"));
     r.register(new ItemNut(new Item.Properties().group(GRP).food(Foods.SWEET_BERRIES)).setRegistryName("pineapple"));
