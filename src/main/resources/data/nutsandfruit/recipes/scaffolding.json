@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "csc",
+    "c c",
+    "c c"
+  ],
+  "key": {
+    "s": {
+      "tag": "forge:string"
+    },
+    "c": {
+      "item": "nutsandfruit:lingonberry_twig"
+    }
+  },
+  "result": {
+    "item": "minecraft:scaffolding",
+    "count": 6
+  }
+}

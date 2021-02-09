@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": [
+    {
+      "item": "nutsandfruit:lime"
+    }
+  ],
+  "result": "minecraft:lime_dye",
+  "experience": 0.3,
+  "cookingtime": 90
+}

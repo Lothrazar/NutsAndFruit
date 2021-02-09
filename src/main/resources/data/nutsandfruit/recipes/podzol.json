@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ccc",
+    "cfc",
+    "ddd"
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:dirt"
+    },
+    "c": {
+      "item": "nutsandfruit:conifer_cone"
+    },
+    "f": {
+      "item": "minecraft:coarse_dirt"
+    }
+  },
+  "result": {
+    "item": "minecraft:podzol",
+    "count": 3
+  }
+}

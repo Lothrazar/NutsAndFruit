@@ -1,6 +1,7 @@
-package com.lothrazar.nutsandfruit;
+package com.lothrazar.nutsandfruit.registry;
 
 import com.google.gson.JsonObject;
+import com.lothrazar.nutsandfruit.NutsAndFruitMod;
 import java.util.List;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -26,7 +27,7 @@ public class LootTableMod extends LootModifier {
       this.percent = 0;
     }
     else {
-      this.percent = pct / 100;
+      this.percent = pct / 100.0F;
     }
   }
 

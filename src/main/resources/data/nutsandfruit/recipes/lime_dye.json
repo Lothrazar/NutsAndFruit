@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "nutsandfruit:lingonberry_twig"
+    }
+  ],
+  "result": {
+    "item": "minecraft:lime_dye"
+  }
+}

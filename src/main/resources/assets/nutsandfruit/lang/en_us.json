@@ -1,4 +1,13 @@
 {
-	"item.nutsandfruit.lime":"Citron"
+	"item.nutsandfruit.lime":"Lime",
+	"item.nutsandfruit.conifer_cone":"Conifer Cone",
+	"item.nutsandfruit.chestnut":"Chestnut",
+	"item.nutsandfruit.chestnut_roasted":"Roasted Chestnut",
+	"item.nutsandfruit.lingonberry":"Lingon Berry",
+	"item.nutsandfruit.lingonberry_twig":"Berry Stick",
+	"item.nutsandfruit.trail_mix":"Trail Mix",
+	"item.nutsandfruit.fruit_mix":"Fruit Mix",
+	"item.nutsandfruit.pineapple":"Dwarf Pineapple",
+	"itemGroup.nutsandfruit":"Nuts and Fruit"
 	
 }

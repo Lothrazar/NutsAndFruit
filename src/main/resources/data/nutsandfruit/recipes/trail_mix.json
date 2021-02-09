@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "item": "nutsandfruit:lingonberry"
+    },
+    {
+      "item": "nutsandfruit:chestnut_roasted"
+    },
+    {
+      "item": "nutsandfruit:conifer_cone"
+    },
+    {
+      "item": "minecraft:pumpkin_seeds"
+    },
+    {
+      "item": "minecraft:wheat_seeds"
+    }
+  ],
+  "result": {
+    "item": "nutsandfruit:trail_mix",
+    "count": 3
+  }
+}
