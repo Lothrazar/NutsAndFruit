@@ -1,7 +1,6 @@
 package com.lothrazar.nutsandfruit.registry;
 
 import com.google.gson.JsonObject;
-import com.lothrazar.nutsandfruit.NutsAndFruitMod;
 import java.util.List;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,7 +21,7 @@ public class LootTableMod extends LootModifier {
   public LootTableMod(ILootCondition[] conditionsIn, Item replacement, float pct) {
     super(conditionsIn);
     item = replacement;
-    pct = Math.min(pct, 100);//stop at 100 if i am larger than 100
+    pct = Math.min(pct, 100); //stop at 100 if i am larger than 100
     if (pct <= 0) {
       this.percent = 0;
     }
@@ -34,10 +33,9 @@ public class LootTableMod extends LootModifier {
   @Override
   public List<ItemStack> doApply(List<ItemStack> originalLoot, LootContext context) {
     if (context.has(LootParameters.BLOCK_STATE) && this.item != null) {
-      //      BlockState stuff = context.get(LootParameters.BLOCK_STATE);
       if (context.getWorld().rand.nextDouble() < this.percent) {
         originalLoot.add(new ItemStack(this.item));
-        NutsAndFruitMod.LOGGER.info(this.percent + " Block state !!! " + new ItemStack(this.item) + " for " + context.get(LootParameters.BLOCK_STATE));
+        // NutsAndFruitMod.LOGGER.info(this.percent + " Block state !!! " + new ItemStack(this.item) + " for " + context.get(LootParameters.BLOCK_STATE));
       }
     }
     return originalLoot;

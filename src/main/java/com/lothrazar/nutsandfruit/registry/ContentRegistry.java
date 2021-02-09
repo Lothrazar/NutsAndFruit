@@ -45,7 +45,7 @@ public class ContentRegistry {
     r.register(new ItemPlain(new Item.Properties().group(GRP).food(Foods.APPLE)).setRegistryName("pineapple"));
     r.register(new ItemPlain(new Item.Properties().group(GRP)).setRegistryName("chestnut"));
     r.register(new ItemPlain(new Item.Properties().group(GRP).food(Foods.COOKED_BEEF)).setRegistryName("chestnut_roasted"));
-    r.register(new ItemFuel(new Item.Properties().group(GRP)).setRegistryName("conifer_cone"));// Conifer cone craft into podzol. also is furnace fuel
+    r.register(new ItemFuel(new Item.Properties().group(GRP)).setRegistryName("conifer_cone"));
     r.register(new ItemPlain(new Item.Properties().group(GRP).food(Foods.COOKED_BEEF)).setRegistryName("trail_mix"));
   }
 }
