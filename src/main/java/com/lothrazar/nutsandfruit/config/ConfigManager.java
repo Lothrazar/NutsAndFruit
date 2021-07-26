@@ -10,7 +10,6 @@ public class ConfigManager {
 
   private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
   private static ForgeConfigSpec CFG;
-  //  public static BooleanValue TESTING;
   static {
     initConfig();
   }
