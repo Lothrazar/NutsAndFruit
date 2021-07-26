@@ -4,10 +4,10 @@ import com.lothrazar.nutsandfruit.NutsAndFruitMod;
 import com.lothrazar.nutsandfruit.item.ItemFuel;
 import com.lothrazar.nutsandfruit.item.ItemLingon;
 import com.lothrazar.nutsandfruit.item.ItemPlain;
-import net.minecraft.item.Foods;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.food.Foods;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -22,10 +22,10 @@ public class ContentRegistry {
   public static Item CHESTNUT;
   @ObjectHolder(NutsAndFruitMod.MODID + ":lingonberry_twig")
   public static Item LINGONBERRY_TWIG;
-  public static final ItemGroup GRP = new ItemGroup(NutsAndFruitMod.MODID) {
+  public static final CreativeModeTab GRP = new CreativeModeTab(NutsAndFruitMod.MODID) {
 
     @Override
-    public ItemStack createIcon() {
+    public ItemStack makeIcon() {
       return new ItemStack(ContentRegistry.CHESTNUT);
     }
   };
@@ -38,14 +38,14 @@ public class ContentRegistry {
   @SubscribeEvent
   public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
     IForgeRegistry<Item> r = event.getRegistry();
-    r.register(new ItemPlain(new Item.Properties().group(GRP).food(Foods.GOLDEN_CARROT)).setRegistryName("fruit_mix"));
-    r.register(new ItemPlain(new Item.Properties().group(GRP).food(Foods.SWEET_BERRIES)).setRegistryName("lime"));
-    r.register(new ItemLingon(new Item.Properties().group(GRP).food(Foods.MELON_SLICE)).setRegistryName("lingonberry"));
-    r.register(new ItemFuel(new Item.Properties().group(GRP)).setRegistryName("lingonberry_twig"));
-    r.register(new ItemPlain(new Item.Properties().group(GRP).food(Foods.APPLE)).setRegistryName("pineapple"));
-    r.register(new ItemPlain(new Item.Properties().group(GRP)).setRegistryName("chestnut"));
-    r.register(new ItemPlain(new Item.Properties().group(GRP).food(Foods.COOKED_BEEF)).setRegistryName("chestnut_roasted"));
-    r.register(new ItemFuel(new Item.Properties().group(GRP)).setRegistryName("conifer_cone"));
-    r.register(new ItemPlain(new Item.Properties().group(GRP).food(Foods.COOKED_BEEF)).setRegistryName("trail_mix"));
+    r.register(new ItemPlain(new Item.Properties().tab(GRP).food(Foods.GOLDEN_CARROT)).setRegistryName("fruit_mix"));
+    r.register(new ItemPlain(new Item.Properties().tab(GRP).food(Foods.SWEET_BERRIES)).setRegistryName("lime"));
+    r.register(new ItemLingon(new Item.Properties().tab(GRP).food(Foods.MELON_SLICE)).setRegistryName("lingonberry"));
+    r.register(new ItemFuel(new Item.Properties().tab(GRP)).setRegistryName("lingonberry_twig"));
+    r.register(new ItemPlain(new Item.Properties().tab(GRP).food(Foods.APPLE)).setRegistryName("pineapple"));
+    r.register(new ItemPlain(new Item.Properties().tab(GRP)).setRegistryName("chestnut"));
+    r.register(new ItemPlain(new Item.Properties().tab(GRP).food(Foods.COOKED_BEEF)).setRegistryName("chestnut_roasted"));
+    r.register(new ItemFuel(new Item.Properties().tab(GRP)).setRegistryName("conifer_cone"));
+    r.register(new ItemPlain(new Item.Properties().tab(GRP).food(Foods.COOKED_BEEF)).setRegistryName("trail_mix"));
   }
 }

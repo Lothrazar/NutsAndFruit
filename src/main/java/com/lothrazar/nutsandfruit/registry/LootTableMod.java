@@ -2,13 +2,13 @@ package com.lothrazar.nutsandfruit.registry;
 
 import com.google.gson.JsonObject;
 import java.util.List;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.loot.LootContext;
-import net.minecraft.loot.LootParameters;
-import net.minecraft.loot.conditions.ILootCondition;
-import net.minecraft.util.JSONUtils;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -18,7 +18,7 @@ public class LootTableMod extends LootModifier {
   private Item item = null;
   private float percent;
 
-  public LootTableMod(ILootCondition[] conditionsIn, Item replacement, float pct) {
+  public LootTableMod(LootItemCondition[] conditionsIn, Item replacement, float pct) {
     super(conditionsIn);
     item = replacement;
     pct = Math.min(pct, 100); //stop at 100 if i am larger than 100
@@ -32,8 +32,8 @@ public class LootTableMod extends LootModifier {
 
   @Override
   public List<ItemStack> doApply(List<ItemStack> originalLoot, LootContext context) {
-    if (context.has(LootParameters.BLOCK_STATE) && this.item != null) {
-      if (context.getWorld().rand.nextDouble() < this.percent) {
+    if (context.hasParam(LootContextParams.BLOCK_STATE) && this.item != null) {
+      if (context.getLevel().random.nextDouble() < this.percent) {
         originalLoot.add(new ItemStack(this.item));
         // NutsAndFruitMod.LOGGER.info(this.percent + " Block state !!! " + new ItemStack(this.item) + " for " + context.get(LootParameters.BLOCK_STATE));
       }
@@ -44,9 +44,9 @@ public class LootTableMod extends LootModifier {
   public static class Serializer extends GlobalLootModifierSerializer<LootTableMod> {
 
     @Override
-    public LootTableMod read(ResourceLocation name, JsonObject json, ILootCondition[] conditionsIn) {
-      Item replacement = ForgeRegistries.ITEMS.getValue(new ResourceLocation(JSONUtils.getString(json, "replacement")));
-      float pct = JSONUtils.getInt(json, "percent");
+    public LootTableMod read(ResourceLocation name, JsonObject json, LootItemCondition[] conditionsIn) {
+      Item replacement = ForgeRegistries.ITEMS.getValue(new ResourceLocation(GsonHelper.getAsString(json, "replacement")));
+      float pct = GsonHelper.getAsInt(json, "percent");
       return new LootTableMod(conditionsIn, replacement, pct);
     }
 
