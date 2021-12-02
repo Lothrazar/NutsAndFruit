@@ -23,7 +23,7 @@ version = "${mc_version}-${mod_version}"
 group = 'com.lothrazar.nutsandfruit' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'nutsandfruit'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(16)
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 checkstyle {
     toolVersion '8.23'
@@ -34,7 +34,7 @@ checkstyleMain {
 }
 
 minecraft {
- mappings channel: 'official', version: '1.17.1'
+ mappings channel: 'official', version: '1.18'
  
  //   accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -75,24 +75,7 @@ minecraft {
                 }
             }
         }
-
-        data {
-            workingDirectory project.file('run')
-
-            // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-
-            args '--mod', 'nutsandfruit', '--all', '--output', file('src/generated/resources/')
-
-            mods {
-                nutsandfruit {
-                    source sourceSets.main
-                }
-            }
-        }
+ 
     }
 }
 
@@ -208,15 +191,16 @@ task signJar(type: SignJar, dependsOn: jar) {
     outputFile = jar.archivePath
 }
 
-// build.dependsOn signJar
+
+build.dependsOn signJar
 
 task copyJar(type: Copy) {
     from jar
     into "${dist_folder}"
 }
 
-// build.finalizedBy copyJar
+build.finalizedBy copyJar
 
-cleanJar {
+task cleanJar {
   delete 'build/libs'
 }
