@@ -20,7 +20,7 @@ public class ItemLingon extends Item {
   public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity entityLiving) {
     ItemStack itemstack = super.finishUsingItem(stack, worldIn, entityLiving);
     if (entityLiving instanceof Player && !((Player) entityLiving).isCreative()) {
-      entityLiving.spawnAtLocation(new ItemStack(ContentRegistry.LINGONBERRY_TWIG));
+      entityLiving.spawnAtLocation(new ItemStack(ContentRegistry.LINGONBERRY_TWIG.get()));
     }
     return itemstack;
   }
