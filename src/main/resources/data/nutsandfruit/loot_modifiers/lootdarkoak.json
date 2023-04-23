@@ -7,5 +7,6 @@
     }
   ],
   "percent": 10,
-  "replacement": "nutsandfruit:chestnut"
+  "replacement": "minecraft:stick",
+  "fruit": "nutsandfruit:chestnut"
 }

@@ -6,6 +6,7 @@
       "block":"minecraft:jungle_leaves"
     }
   ],
-  "percent": 5,
-  "replacement": "nutsandfruit:pineapple"
+  "percent": 25,
+  "replacement": "minecraft:stick",
+  "fruit": "nutsandfruit:pineapple"
 }

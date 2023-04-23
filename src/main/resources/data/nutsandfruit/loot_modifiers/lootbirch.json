@@ -7,5 +7,6 @@
     }
   ],
   "percent": 15,
-  "replacement": "nutsandfruit:lingonberry"
+  "replacement": "minecraft:stick",
+  "fruit": "nutsandfruit:lingonberry"
 }

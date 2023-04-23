@@ -7,5 +7,6 @@
     }
   ],
   "percent": 10,
-  "replacement": "nutsandfruit:conifer_cone"
+  "replacement": "minecraft:stick",
+  "fruit": "nutsandfruit:conifer_cone"
 }
