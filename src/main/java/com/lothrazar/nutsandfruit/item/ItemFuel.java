@@ -1,17 +1,10 @@
 package com.lothrazar.nutsandfruit.item;
 
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeType;
+import com.lothrazar.library.item.ItemFlib;
 
-public class ItemFuel extends Item {
+public class ItemFuel extends ItemFlib {
 
   public ItemFuel(Properties properties) {
-    super(properties);
-  }
-
-  @Override
-  public int getBurnTime(ItemStack itemStack, RecipeType<?> recipeType) {
-    return 200;
+    super(properties, new ItemFlib.Settings().burnTime(200));
   }
 }
