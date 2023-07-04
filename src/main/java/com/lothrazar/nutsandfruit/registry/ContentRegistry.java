@@ -1,14 +1,17 @@
 package com.lothrazar.nutsandfruit.registry;
 
 import com.lothrazar.library.item.ItemFlib;
-import com.lothrazar.library.registry.RegistryFactory;
 import com.lothrazar.nutsandfruit.NutsAndFruitMod;
 import com.lothrazar.nutsandfruit.item.ItemFuel;
 import com.lothrazar.nutsandfruit.item.ItemLingon;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.Foods;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
@@ -20,10 +23,19 @@ import net.minecraftforge.registries.RegistryObject;
 public class ContentRegistry {
 
   public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, NutsAndFruitMod.MODID);
+  private static final ResourceKey<CreativeModeTab> TAB = ResourceKey.create(Registries.CREATIVE_MODE_TAB, new ResourceLocation(NutsAndFruitMod.MODID, "tab"));
 
   @SubscribeEvent
-  public static void buildContents(CreativeModeTabEvent.Register event) {
-    RegistryFactory.buildTab(event, NutsAndFruitMod.MODID, CHESTNUT.get().asItem(), ITEMS);
+  public static void onCreativeModeTabRegister(RegisterEvent event) {
+    event.register(Registries.CREATIVE_MODE_TAB, helper -> {
+      helper.register(TAB, CreativeModeTab.builder().icon(() -> new ItemStack(CHESTNUT.get()))
+          .title(Component.translatable("itemGroup." + NutsAndFruitMod.MODID))
+          .displayItems((enabledFlags, populator) -> {
+            for (RegistryObject<Item> entry : ITEMS.getEntries()) {
+              populator.accept(entry.get());
+            }
+          }).build());
+    });
   }
 
   public static final RegistryObject<Item> FRUIT_MIX = ITEMS.register("fruit_mix", () -> new ItemFlib(new Item.Properties().food(Foods.GOLDEN_CARROT)));
