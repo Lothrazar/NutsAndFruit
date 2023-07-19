@@ -1,6 +1,7 @@
 package com.lothrazar.nutsandfruit.registry;
 
 import com.lothrazar.library.item.ItemFlib;
+import com.lothrazar.library.registry.RecipeCompostFactory;
 import com.lothrazar.nutsandfruit.NutsAndFruitMod;
 import com.lothrazar.nutsandfruit.item.ItemFuel;
 import com.lothrazar.nutsandfruit.item.ItemLingon;
@@ -53,5 +54,14 @@ public class ContentRegistry {
     event.register(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, r -> {
       r.register(new ResourceLocation(NutsAndFruitMod.MODID, "loot"), LeavesLootModifier.CODEC.get());
     });
+  }
+
+  public static void registerCompostables() {
+    RecipeCompostFactory.put(LIME.get(), RecipeCompostFactory.FillValues.FLOWER);
+    RecipeCompostFactory.put(LINGONBERRY.get(), RecipeCompostFactory.FillValues.FLOWER);
+    RecipeCompostFactory.put(LINGONBERRY_TWIG.get(), RecipeCompostFactory.FillValues.LEAVES);
+    RecipeCompostFactory.put(PINEAPPLE.get(), RecipeCompostFactory.FillValues.FLOWER);
+    RecipeCompostFactory.put(CHESTNUT.get(), RecipeCompostFactory.FillValues.LEAVES);
+    RecipeCompostFactory.put(CONIFER_CONE.get(), RecipeCompostFactory.FillValues.FLOWER);
   }
 }
