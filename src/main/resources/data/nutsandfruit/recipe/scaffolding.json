@@ -7,14 +7,14 @@
   ],
   "key": {
     "s": {
-      "tag": "forge:string"
+      "tag": "c:strings"
     },
     "c": {
       "item": "nutsandfruit:lingonberry_twig"
     }
   },
   "result": {
-    "item": "minecraft:scaffolding",
+    "id": "minecraft:scaffolding",
     "count": 6
   }
 }

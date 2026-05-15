@@ -2,10 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "nutsandfruit:lingonberry_twig"
+      "item": "nutsandfruit:pineapple"
     }
   ],
   "result": {
-    "item": "minecraft:lime_dye"
+    "id": "minecraft:sugar",
+    "count": 3
   }
 }

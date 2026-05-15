@@ -3,24 +3,25 @@ package com.lothrazar.nutsandfruit.registry;
 import java.util.function.Supplier;
 import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
-import net.minecraftforge.common.loot.LootModifier;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
+import net.neoforged.neoforge.common.loot.LootModifier;
 
 public class LeavesLootModifier extends LootModifier {
 
   private static final RandomSource rand = RandomSource.create();
-  public static final Supplier<Codec<LeavesLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst).and(inst.group(
+  public static final Supplier<MapCodec<LeavesLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.mapCodec(inst -> codecStart(inst).and(inst.group(
       Codec.INT.fieldOf("percent").forGetter(m -> m.percent),
-      ForgeRegistries.ITEMS.getCodec().fieldOf("replacement").forGetter(m -> m.replacement),
-      ForgeRegistries.ITEMS.getCodec().fieldOf("fruit").forGetter(m -> m.fruit)))
+      BuiltInRegistries.ITEM.byNameCodec().fieldOf("replacement").forGetter(m -> m.replacement),
+      BuiltInRegistries.ITEM.byNameCodec().fieldOf("fruit").forGetter(m -> m.fruit)))
       .apply(inst, LeavesLootModifier::new)));
   private int percent;
   private final Item replacement;
@@ -37,7 +38,7 @@ public class LeavesLootModifier extends LootModifier {
   }
 
   @Override
-  public Codec<? extends IGlobalLootModifier> codec() {
+  public MapCodec<? extends IGlobalLootModifier> codec() {
     return CODEC.get();
   }
 
