@@ -5,6 +5,8 @@ import com.lothrazar.library.registry.RecipeCompostFactory;
 import com.lothrazar.nutsandfruit.NutsAndFruitMod;
 import com.lothrazar.nutsandfruit.item.ItemFuel;
 import com.lothrazar.nutsandfruit.item.ItemLingon;
+import com.mojang.serialization.MapCodec;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -13,18 +15,37 @@ import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegisterEvent;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = NutsAndFruitMod.MODID)
 public class ContentRegistry {
 
-  public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, NutsAndFruitMod.MODID);
-  private static final ResourceKey<CreativeModeTab> TAB = ResourceKey.create(Registries.CREATIVE_MODE_TAB, new ResourceLocation(NutsAndFruitMod.MODID, "tab"));
+  public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(BuiltInRegistries.ITEM, NutsAndFruitMod.MODID);
+  public static final DeferredRegister<MapCodec<? extends IGlobalLootModifier>> LOOT_MODIFIER_SERIALIZERS =
+      DeferredRegister.create(NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, NutsAndFruitMod.MODID);
+
+  private static final ResourceKey<CreativeModeTab> TAB = ResourceKey.create(Registries.CREATIVE_MODE_TAB,
+      ResourceLocation.fromNamespaceAndPath(NutsAndFruitMod.MODID, "tab"));
+
+  public static final DeferredHolder<Item, Item> FRUIT_MIX = ITEMS.register("fruit_mix", () -> new ItemFlib(new Item.Properties().food(Foods.GOLDEN_CARROT)));
+  public static final DeferredHolder<Item, Item> LIME = ITEMS.register("lime", () -> new ItemLingon(new Item.Properties().food(Foods.SWEET_BERRIES)));
+  public static final DeferredHolder<Item, Item> LINGONBERRY = ITEMS.register("lingonberry", () -> new ItemLingon(new Item.Properties().food(Foods.MELON_SLICE)));
+  public static final DeferredHolder<Item, Item> LINGONBERRY_TWIG = ITEMS.register("lingonberry_twig", () -> new ItemFuel(new Item.Properties()));
+  public static final DeferredHolder<Item, Item> PINEAPPLE = ITEMS.register("pineapple", () -> new ItemFlib(new Item.Properties().food(Foods.APPLE)));
+  public static final DeferredHolder<Item, Item> CHESTNUT = ITEMS.register("chestnut", () -> new ItemFlib(new Item.Properties()));
+  public static final DeferredHolder<Item, Item> CHESTNUT_ROASTED = ITEMS.register("chestnut_roasted", () -> new ItemFlib(new Item.Properties().food(Foods.COOKED_BEEF)));
+  public static final DeferredHolder<Item, Item> CONIFER_CONE = ITEMS.register("conifer_cone", () -> new ItemFuel(new Item.Properties()));
+  public static final DeferredHolder<Item, Item> TRAIL_MIX = ITEMS.register("trail_mix", () -> new ItemFlib(new Item.Properties().food(Foods.GOLDEN_CARROT)));
+
+  @SuppressWarnings("unused")
+  public static final DeferredHolder<MapCodec<? extends IGlobalLootModifier>, MapCodec<LeavesLootModifier>> LEAVES_MODIFIER =
+      LOOT_MODIFIER_SERIALIZERS.register("loot", LeavesLootModifier.CODEC);
 
   @SubscribeEvent
   public static void onCreativeModeTabRegister(RegisterEvent event) {
@@ -32,27 +53,10 @@ public class ContentRegistry {
       helper.register(TAB, CreativeModeTab.builder().icon(() -> new ItemStack(CHESTNUT.get()))
           .title(Component.translatable("itemGroup." + NutsAndFruitMod.MODID))
           .displayItems((enabledFlags, populator) -> {
-            for (RegistryObject<Item> entry : ITEMS.getEntries()) {
+            for (DeferredHolder<Item, ? extends Item> entry : ITEMS.getEntries()) {
               populator.accept(entry.get());
             }
           }).build());
-    });
-  }
-
-  public static final RegistryObject<Item> FRUIT_MIX = ITEMS.register("fruit_mix", () -> new ItemFlib(new Item.Properties().food(Foods.GOLDEN_CARROT)));
-  public static final RegistryObject<Item> LIME = ITEMS.register("lime", () -> new ItemLingon(new Item.Properties().food(Foods.SWEET_BERRIES)));
-  public static final RegistryObject<Item> LINGONBERRY = ITEMS.register("lingonberry", () -> new ItemLingon(new Item.Properties().food(Foods.MELON_SLICE)));
-  public static final RegistryObject<Item> LINGONBERRY_TWIG = ITEMS.register("lingonberry_twig", () -> new ItemFuel(new Item.Properties()));
-  public static final RegistryObject<Item> PINEAPPLE = ITEMS.register("pineapple", () -> new ItemFlib(new Item.Properties().food(Foods.APPLE)));
-  public static final RegistryObject<Item> CHESTNUT = ITEMS.register("chestnut", () -> new ItemFlib(new Item.Properties()));
-  public static final RegistryObject<Item> CHESTNUT_ROASTED = ITEMS.register("chestnut_roasted", () -> new ItemFlib(new Item.Properties().food(Foods.COOKED_BEEF)));
-  public static final RegistryObject<Item> CONIFER_CONE = ITEMS.register("conifer_cone", () -> new ItemFuel(new Item.Properties()));
-  public static final RegistryObject<Item> TRAIL_MIX = ITEMS.register("trail_mix", () -> new ItemFlib(new Item.Properties().food(Foods.GOLDEN_CARROT)));
-
-  @SubscribeEvent
-  public static void onBlocksRegistry(RegisterEvent event) {
-    event.register(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, r -> {
-      r.register(new ResourceLocation(NutsAndFruitMod.MODID, "loot"), LeavesLootModifier.CODEC.get());
     });
   }
 
