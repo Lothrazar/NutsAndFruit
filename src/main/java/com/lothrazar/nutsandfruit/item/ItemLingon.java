@@ -2,6 +2,7 @@ package com.lothrazar.nutsandfruit.item;
 
 import com.lothrazar.library.item.ItemFlib;
 import com.lothrazar.nutsandfruit.registry.ContentRegistry;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -19,8 +20,8 @@ public class ItemLingon extends ItemFlib {
   @Override
   public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity entityLiving) {
     ItemStack itemstack = super.finishUsingItem(stack, worldIn, entityLiving);
-    if (entityLiving instanceof Player && !((Player) entityLiving).isCreative()) {
-      entityLiving.spawnAtLocation(new ItemStack(ContentRegistry.LINGONBERRY_TWIG.get()));
+    if (entityLiving instanceof Player && !((Player) entityLiving).isCreative() && worldIn instanceof ServerLevel serverLevel) {
+      entityLiving.spawnAtLocation(serverLevel, new ItemStack(ContentRegistry.LINGONBERRY_TWIG.get()));
     }
     return itemstack;
   }

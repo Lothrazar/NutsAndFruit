@@ -27,8 +27,8 @@ public class LeavesLootModifier extends LootModifier {
   private final Item replacement;
   private final Item fruit;
 
-  public LeavesLootModifier(LootItemCondition[] conditionsIn, int percent, Item reward, Item fruit) {
-    super(conditionsIn);
+  public LeavesLootModifier(LootItemCondition[] conditionsIn, int priority, int percent, Item reward, Item fruit) {
+    super(conditionsIn, priority);
     this.replacement = reward;
     this.fruit = fruit;
     this.percent = Math.min(percent, 100);

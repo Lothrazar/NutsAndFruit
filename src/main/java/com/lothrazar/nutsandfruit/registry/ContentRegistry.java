@@ -10,7 +10,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -31,7 +31,7 @@ public class ContentRegistry {
       DeferredRegister.create(NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, NutsAndFruitMod.MODID);
 
   private static final ResourceKey<CreativeModeTab> TAB = ResourceKey.create(Registries.CREATIVE_MODE_TAB,
-      ResourceLocation.fromNamespaceAndPath(NutsAndFruitMod.MODID, "tab"));
+      Identifier.fromNamespaceAndPath(NutsAndFruitMod.MODID, "tab"));
 
   public static final DeferredHolder<Item, Item> FRUIT_MIX = ITEMS.register("fruit_mix", () -> new ItemFlib(new Item.Properties().food(Foods.GOLDEN_CARROT)));
   public static final DeferredHolder<Item, Item> LIME = ITEMS.register("lime", () -> new ItemLingon(new Item.Properties().food(Foods.SWEET_BERRIES)));
