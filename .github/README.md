@@ -7,6 +7,8 @@ Project page with releases:  https://www.curseforge.com/minecraft/mc-mods/simple
 Development by Lothrazar
 Art & Design by Shy https://www.patreon.com/ShyNieke
 
+[![CurseForge](https://img.shields.io/badge/CurseForge-F16436?style=flat-square&logo=curseforge&logoColor=white)](https://www.curseforge.com/minecraft/mc-mods/nuts-and-fruit)
+[![Modrinth](https://img.shields.io/badge/Modrinth-1bd96a?style=flat-square&logo=modrinth&logoColor=white)](https://modrinth.com/mod/nuts-and-fruit)
 
 
 [![](http://cf.way2muchnoise.eu/444242.svg)](https://www.curseforge.com/minecraft/mc-mods/nuts-and-fruit) 
@@ -14,8 +16,6 @@ Art & Design by Shy https://www.patreon.com/ShyNieke
 
 ![build](https://github.com/Lothrazar/NutsAndFruit/workflows/build/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Twitter Badge](https://img.shields.io/badge/contact-twitter-blue.svg)](https://twitter.com/lothrazar)
-[![Discord](https://img.shields.io/discord/749302798797242449.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/uWZ3jf56fV)
 [![links](https://img.shields.io/badge/more-links-ff69b4.svg)](https://allmylinks.com/lothrazar)
 [![Support](https://img.shields.io/badge/Patreon-Support-orange.svg?logo=Patreon)](https://www.patreon.com/ShyNieke)
 
